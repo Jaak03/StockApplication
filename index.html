@@ -1,0 +1,41 @@
+<!DOCTYPE>
+<html ng-app="newApp">
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+	<Title>Stock Pro</Title>
+</head>
+<body style="background:{{'orange'}}">
+	<div class="container" ng-controller="newconttroller">
+		<h1>Stock Pro</h1>
+		<table class="table">
+			<thead>
+				<tr>
+
+					<th>Name</th>
+					<th>Description</th>
+					<th>Quantity</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="stock in stocklist">
+					<td>{{stock.name}}</td>
+					<td>{{stock.description}}</td>
+					<td>{{stock.quantity}}</td>
+					<td>{{stock.price}}</td>
+			</tbody>
+					</table>
+
+	</div>
+
+<script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+<script src="css.js"></script>
+
+</body>
+</html>
