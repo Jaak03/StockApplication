@@ -10,8 +10,8 @@
 
 	<Title>Stock Pro</Title>
 </head>
-<body style="background:{{'orange'}}">
-	<div class="container" ng-controller="newconttroller">
+<body style="background:{{''}}">
+	<div class="container" ng-controller="myCtrl">
 		<h1>Stock Pro</h1>
 		<table class="table">
 			<thead>
@@ -24,15 +24,25 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="stock in stocklist">
-					<td>{{stock.name}}</td>
-					<td>{{stock.description}}</td>
-					<td>{{stock.quantity}}</td>
-					<td>{{stock.price}}</td>
+				<tr ng-repeat="x in myData">
+					<td>{{x.name}}</td>
+					<td>{{x.description}}</td>
+					<td>{{x.quantity}}</td>
+					<td>{{x.price}}</td>
 			</tbody>
 					</table>
 
 	</div>
+
+	<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<ul>
+  <li ng-repeat="x in myData">
+    {{ x.name + ', ' + x.price }}
+  </li>
+</ul>
+
+</div>
 
 <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 <script src="css.js"></script>
