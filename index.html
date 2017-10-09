@@ -1,5 +1,5 @@
 <!DOCTYPE>
-<html ng-app="newApp">
+<html ng-app>
 <head>
 
 <!-- Latest compiled and minified CSS -->
@@ -10,42 +10,44 @@
 
 	<Title>Stock Pro</Title>
 </head>
-<body style="background:{{''}}">
-	<div class="container" ng-controller="myCtrl">
+<body style="background:{{'orange'}}">
+	<div class="container" ng-controller="AppCtrl">
 		<h1>Stock Pro</h1>
+				
 		<table class="table">
 			<thead>
 				<tr>
-
 					<th>Name</th>
 					<th>Description</th>
 					<th>Quantity</th>
 					<th>Price</th>
+					<th>Action</th>
+					<th>&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="x in myData">
-					<td>{{x.name}}</td>
-					<td>{{x.description}}</td>
-					<td>{{x.quantity}}</td>
-					<td>{{x.price}}</td>
+				<tr>
+					<td><input class="form-control" ng-model ="stock.name"></td>
+					<td><input class="form-control" ng-model ="stock.description"></td>
+					<td><input class="form-control" ng-model ="stock.quantity"></td>
+					<td><input class="form-control" ng-model ="stock.price"></td>
+					<td><button class= "btn btn-primary" ng-click="addstock()">ADD STOCK</button></td>
+					<td><button class="btn btn-info" ng-click="updat()">Update</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+				</tr>
+				<tr ng-repeat="stock in stocklist">
+					<td>{{stock.name}}</td>
+					<td>{{stock.description}}</td>
+					<td>{{stock.quantity}}</td>
+					<td>{{stock.price}}</td>
+					<td><button class= "btn btn-danger" ng-click="remove(stock._id">Remove</button></td>
+					<td><button class="btn btn-warning" ng-click="edit(stock.id)">Edit</button></td>
 			</tbody>
 					</table>
 
 	</div>
 
-	<div ng-app="myApp" ng-controller="myCtrl"> 
-
-<ul>
-  <li ng-repeat="x in myData">
-    {{ x.name + ', ' + x.price }}
-  </li>
-</ul>
-
-</div>
-
 <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-<script src="css.js"></script>
+<script src="controllers/controller.js"></script>
 
 </body>
 </html>

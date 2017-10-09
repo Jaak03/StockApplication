@@ -1,51 +1,49 @@
-function AppCtrl($scope){
-	console.log("Hello world from controller");
+function AppCtrl(){
+console.log("Hello world from controller");
 
-	stock1 ={
-		name: 'Tim',
-		description: 'Drill',
-		quantity: '100',
-		price: '100'
-	};
-	stock2 ={
-		name: 'Ruan',
-		description: 'Ball',
-		quantity: '40',
-		price: '12'
-	};
-	stock3 ={
-		name: 'Jan',
-		description: 'bigshaft',
-		quantity: '433',
-		price: '400'
-	};
-	
-	var stocklist =[stock1,stock2,stock3];
-	$scope.stocklist = stocklist;
-
-}
-exports.list_all_stocks = function(req, res) {
-  
-  	stock1 ={
-		name: 'Tim',
-		description: 'Drill',
-		quantity: '100',
-		price: '100'
-	};
-	stock2 ={
-		name: 'Ruan',
-		description: 'Ball',
-		quantity: '40',
-		price: '12'
-	};
-	stock3 ={
-		name: 'Jan',
-		description: 'bigshaft',
-		quantity: '433',
-		price: '400'
-	};
-	
-	var stocklist =[stock1,stock2,stock3];
-    res.json(stocklist);
-  
+var refresh = function(){
+$http.get('/stocklist').uccess(function(response){
+console.log("I got the data");
+$scope.stocklist = response;
+$scope.stock = "";
+mongo
+});
 };
+
+refresh();
+
+$scope.addstock =function(){
+	console.log($scope.stock);
+	$http.post('/stocklist', $scope.stock).success(function(response){
+		console.log(response);
+		refresh();
+	});
+};
+
+$scope.remove = function(id){
+console.log(id);
+$http.delete('/stocklist/' + id).success(function(response){
+	refresh();
+})
+};
+
+$scope.edit = function(id){
+	console.log(id);
+	$http.get('/stocklist/' = id).success(function(response){
+		$scope.stock = response;
+	})
+};
+$scope.update = function(){
+	console.log($scope.stock._id);
+	$http.put('/stocklist/' = $scoe.stock._id, $scope.stock).success(function(response){
+		refresh();
+	})
+}
+
+$scope.deselect = function(){
+	$scope.stock="";
+}
+
+	
+	
+}
